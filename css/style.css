@@ -43,7 +43,7 @@
     max-height: 45px;
     background-color: black;
     color: white; */
-}
+/* } */
 /* .container {
     display: inline-block;
     cursor: pointer;
@@ -102,19 +102,17 @@
 } */
 
 #myCanvas {
-    position: relative;
+    position: absolute;
     width:100%; 
     height:100%;
 }
 
 #main-content {
-    position: absolute;
+    position: relative;
     color: black;
     left: 0;
     top:4.8%;
     height:95.2%;
     width:100%;
 }
-
-
 /* ---------------------- */
