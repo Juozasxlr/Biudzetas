@@ -1,3 +1,6 @@
+var arr=[100, 200, 3000, 400, 500, 6900, 700, 800];
+
+
 class PChartElement extends HTMLElement {
     connectedCallback() {
     }
@@ -42,6 +45,7 @@ class PChart extends HTMLElement {
         }
     }
     drawChart = function() {
+        // let arr=[100, 200, 300, 400, 500, 600, 700, 800];
         this.arcs = [] 
         var elements = this.getElementsByTagName("pchart-element");
         this.names = [];
@@ -50,7 +54,8 @@ class PChart extends HTMLElement {
         for (i = 0; i < elements.length; i++)
         {
             this.names.push(elements[i].getAttribute("name"));
-            this.vals.push(parseFloat(elements[i].getAttribute("value")));
+            this.vals.push(arr[i]);
+            // this.vals.push(parseFloat(elements[i].getAttribute("value")));
             this.colours.push(elements[i].getAttribute("colour"))
         }
         var shadow = this.shadowRoot;
@@ -64,7 +69,7 @@ class PChart extends HTMLElement {
 
         var font_size = parseInt(width * 0.02166847);
 
-        var max_font_size = 18;
+        var max_font_size = 14;
 
         if (font_size > max_font_size) {
             font_size = max_font_size;
@@ -81,14 +86,14 @@ class PChart extends HTMLElement {
 
         var share_percentage = [];
 
-        var x = c.width - parseInt(c.width * 0.12019231) * 1.5;
+        var x = c.width - parseInt(c.width * 0.12919231) * 1.5;
         var y = font_size;
 
         ctx.beginPath();
         var rect_height = (this.names.length * font_size) + 20;
-        ctx.rect(x, y+20, parseInt(c.width * 0.15019231), rect_height);
+        // ctx.rect(x, y+20, parseInt(c.width * 0.15019231), rect_height);
         ctx.stroke();
-        y += 20;
+        y += 170;
         for (var i=0;i<this.names.length;i++)
         {
             var percentage = this.vals[i] / this.vals.reduce(this.totalFunc);
@@ -97,16 +102,16 @@ class PChart extends HTMLElement {
             y += font_size;
             ctx.beginPath();
             ctx.fillStyle = this.colours[i];
-            ctx.fillRect(x + 5, y-font_size/2, 5, 5);
+            ctx.fillRect(x + 5, y-font_size/2, 6, 6);
 
             ctx.font = String(font_size) + "px Arial";
             var shorten = 0;
-            if (ctx.measureText(this.names[i]).width > parseInt(c.width * 0.13019231)-15) {
-                while(ctx.measureText(this.shorten_text(this.names[i],this.names[i].length - shorten)).width > (parseInt(c.width * 0.12019231)-15) && this.names[i].length - shorten>0) {
+            if (ctx.measureText(this.names[i]).width > parseInt(c.width * 0.15019231)-15) {
+                while(ctx.measureText(this.shorten_text(this.names[i],this.names[i].length - shorten)).width > (parseInt(c.width * 0.15019231)-15) && this.names[i].length - shorten>0) {
                     shorten++;
                 }
             }
-            ctx.fillText(this.shorten_text(this.names[i],this.names[i].length - shorten), x + 15, y);
+            ctx.fillText(this.shorten_text(this.names[i],this.names[i].length - shorten), x + 25, y);
             ctx.closePath();
         }
         for (var i = 0; i < share_percentage.length; i++)

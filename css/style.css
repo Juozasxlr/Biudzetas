@@ -1,4 +1,4 @@
-.class
+/* .class */
 
 /* Grafiko css */
 /* --------------------- */
@@ -102,17 +102,17 @@
 } */
 
 #myCanvas {
-    position: absolute;
-    width:100%; 
-    height:100%;
-}
+    position: absolute; 
+     width:100%; 
+    height:100%; 
+ } 
 
-#main-content {
+ #main-content {
     position: relative;
-    color: black;
-    left: 0;
-    top:4.8%;
-    height:95.2%;
-    width:100%;
-}
+     color: black; 
+     left: 0; 
+     top:4.8%; 
+     height:100%;
+    width:100%; 
+} 
 /* ---------------------- */
